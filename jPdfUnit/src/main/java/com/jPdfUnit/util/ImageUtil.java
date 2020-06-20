@@ -2,26 +2,29 @@ package com.jPdfUnit.util;
 
 import java.awt.image.BufferedImage;
 
+/**
+ * This is a util class for images.
+ */
 public class ImageUtil {
 
     /**
      * Compares two images pixel by pixel.
      *
-     * @param imgA the first image.
-     * @param imgB the second image.
-     * @return whether the images are both the same or not.
+     * @param image1 the first image.
+     * @param image2 the second image.
+     * @return true if the images are the same and false otherwise
      */
-    public static boolean equals(BufferedImage imgA, BufferedImage imgB) {
-        if (imgA.getWidth() != imgB.getWidth() || imgA.getHeight() != imgB.getHeight()) {
+    public static boolean equals(BufferedImage image1, BufferedImage image2) {
+        if (image1.getWidth() != image2.getWidth() || image1.getHeight() != image2.getHeight()) {
             return false;
         }
 
-        int width  = imgA.getWidth();
-        int height = imgA.getHeight();
+        int width  = image1.getWidth();
+        int height = image1.getHeight();
 
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
-                if (imgA.getRGB(x, y) != imgB.getRGB(x, y)) {
+                if (image1.getRGB(x, y) != image2.getRGB(x, y)) {
                     return false;
                 }
             }

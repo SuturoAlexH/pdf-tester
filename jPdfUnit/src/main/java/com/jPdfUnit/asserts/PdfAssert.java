@@ -9,16 +9,32 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Assertion for pdf files.
+ */
 public class PdfAssert extends AbstractAssert<PdfAssert, File> {
 
-    public PdfAssert(File actual) {
+    PdfAssert(File actual) {
         super(actual, PdfAssert.class);
     }
 
+    /**
+     *
+     * @param actual
+     * @return
+     */
     public static PdfAssert assertThat(File actual) {
         return new PdfAssert(actual);
     }
 
+    /**
+     * Counts the number of pages of the pdf document and compares it
+     * with the #expectedPageCount. If the number of pages are different
+     * the method fails.
+     *
+     * @param expectedPageCount the expected page count
+     * @return the pdf assertion
+     */
     public PdfAssert hasNumberOfPages(final int expectedPageCount) {
         isNotNull();
 
@@ -34,6 +50,13 @@ public class PdfAssert extends AbstractAssert<PdfAssert, File> {
         return this;
     }
 
+    /**
+     * Compares the #referencePdfDocument with the pdf file and
+     * fails if they have a different appearance.
+     *
+     * @param referencePdfDocument the reference document
+     * @return the pdf assertion
+     */
     public PdfAssert hasSameAppearanceAs(final File referencePdfDocument) {
         isNotNull();
 
